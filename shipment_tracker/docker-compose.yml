@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:18-alpine
+    restart: always
+    container_name: shipment_tracker_db
+    environment:
+      POSTGRES_DB: shipment_tracker_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123abc
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+
+volumes:
+  postgres_data:
+
